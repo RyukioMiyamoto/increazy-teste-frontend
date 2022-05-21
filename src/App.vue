@@ -1,8 +1,14 @@
 <template>
   <div id="app">
-    <h1>Hello World</h1>
   </div>
 </template>
 
 <style lang="scss">
+@import "@/scss/reset";
+@import "@/scss/typography";
+
+body {
+  box-sizing: border-box;
+  font: 400 1.6rem "Open Sans", sans-serif;
+}
 </style>
