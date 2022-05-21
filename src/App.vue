@@ -1,17 +1,20 @@
 <template>
   <div id="app">
     <MainHeader />
+    <SideNav />
     <router-view></router-view>
   </div>
 </template>
 
 <script>
 import MainHeader from "@/components/MainHeader";
+import SideNav from "@/components/SideNav";
 
 export default {
   name: "app",
   components: {
     MainHeader,
+    SideNav,
   },
 };
 </script>
@@ -23,5 +26,10 @@ export default {
 body {
   box-sizing: border-box;
   font: 400 1.6rem "Open Sans", sans-serif;
+}
+
+#app {
+  display: grid;
+  grid-template-columns: auto 1fr;
 }
 </style>

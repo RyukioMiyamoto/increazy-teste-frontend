@@ -27,6 +27,7 @@ export default {
 <style lang="scss">
 .header {
   display: flex;
+  grid-column: 1/-1;
   justify-content: space-between;
   gap: 2.4rem;
   padding: 1rem 5.6rem 1rem 10rem;
