@@ -32,4 +32,11 @@ body {
   display: grid;
   grid-template-columns: auto 1fr;
 }
+
+.sr-only {
+  background-color: red;
+  position: absolute;
+  top: 1000%;
+  right: 1000%;
+}
 </style>
