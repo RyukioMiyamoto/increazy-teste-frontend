@@ -1,7 +1,20 @@
 <template>
   <div id="app">
+    <MainHeader />
+    <router-view></router-view>
   </div>
 </template>
+
+<script>
+import MainHeader from "@/components/MainHeader";
+
+export default {
+  name: "app",
+  components: {
+    MainHeader,
+  },
+};
+</script>
 
 <style lang="scss">
 @import "@/scss/reset";
