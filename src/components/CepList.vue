@@ -10,25 +10,32 @@
         >
           <div class="ceps-item__icon"></div>
           <p class="ceps-item__cep">
-            Cep <span>{{ cep }}</span>
+            Cep <span>{{ cep.cep }}</span>
           </p>
           <button class="ceps-item__delete"></button>
         </li>
       </transition-group>
     </ul>
-    <ButtonPrimary class="btn--generate-address">Gerar Endereços</ButtonPrimary>
+    <ButtonPrimary class="btn--generate-address" :method="addEndereco">Gerar Endereços</ButtonPrimary>
     <div class="separator"></div>
   </section>
 </template>
 
 <script>
 import AddCep from "@/components/AddCep";
+import { mapMutations } from 'vuex';
 
 export default {
   name: "CepList",
   components: {
     AddCep,
   },
+  methods: {
+    ...mapMutations(["ADD_ADDRESS"]), 
+    addEndereco() {
+      this.ADD_ADDRESS({cep: '12247060', rua: 'rua'})
+    }
+  }
 };
 </script>
 

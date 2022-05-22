@@ -41,21 +41,27 @@ export default {
   methods: {
     ...mapMutations(["ADD_CEP"]),
 
-    addCep() {
-      if (
-        isNaN(this.cep) ||
-        this.cepNumber <= 0 ||
-        this.cepNumber % 1 !== 0 ||
-        this.cepNumber.length < 8
-      ) {
-        this.showMessage("Insira um CEP em formato válido");
-        return;
-      } else if (this.allCeps.includes(this.cepNumber)) {
+    async addCep() {
+      if (Object.keys(this.allCeps).includes(this.cep)) {
         this.showMessage("CEP já listado");
         return;
+      } else if (
+        this.cepNumber.length < 8 ||
+        this.cepNumber === 0 ||
+        isNaN(this.cep) ||
+        this.cepNumber % 1 !== 0
+      ) {
+        this.showMessage("Favor inserir um CEP no formato válido");
+        return;
+      } else {
+        const res = await fetch(`https://viacep.com.br/ws/${this.cep}/json/`);
+        const data = await res.json();
+        if (data.erro) {
+          this.showMessage("CEP não encontrado");
+          return;
+        }
+        this.ADD_CEP(data);
       }
-      this.ADD_CEP(this.cepNumber);
-      this.cep = "";
     },
 
     showMessage(message) {
@@ -103,7 +109,7 @@ export default {
     color: red;
     position: absolute;
     bottom: 5%;
-    left: 5%;
+    left: 2%;
   }
 
   .btn--add-cep {
