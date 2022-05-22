@@ -1,25 +1,31 @@
 <template>
   <section class="list-container">
     <AddCep class="add-cep" />
-    <ul class="ceps-list">
-      <transition-group appear mode="out-in">
-        <li
-          v-for="(cep, i) in this.$store.state.ceps"
-          :key="cep + i"
-          class="ceps-item"
+    <transition-group tag="ul" class="ceps-list">
+      <li
+        v-for="(cep, i) in this.$store.state.ceps"
+        :key="cep + i"
+        class="ceps-item"
+        role="listitem"
+      >
+        <div class="ceps-item__icon"></div>
+        <p class="ceps-item__cep">
+          Cep <span>{{ cep.cep }}</span>
+        </p>
+        <button
+          class="ceps-item__delete"
+          @click="deleteCepAndAddress(cep)"
+          aria-label="Apaga o CEP listado"
         >
-          <div class="ceps-item__icon"></div>
-          <p class="ceps-item__cep">
-            Cep <span>{{ cep.cep }}</span>
-          </p>
-          <button class="ceps-item__delete" @click="deleteCepAndAddress(cep)">
-            x
-          </button>
-        </li>
-      </transition-group>
-    </ul>
+          x
+        </button>
+      </li>
+    </transition-group>
     <div class="btn--generate-address">
-      <ButtonPrimary :method="addEndereco" id="btn--generate-address"
+      <ButtonPrimary
+        :method="addEndereco"
+        id="btn--generate-address"
+        ariaLabel="Gera uma lista de endereços"
         >Gerar Endereços</ButtonPrimary
       >
       <transition>

@@ -2,14 +2,36 @@
   <nav class="sidenav">
     <ul class="actions">
       <li>
-        <a href="#"><img src="@/assets/icone-busca.svg" alt="" /></a>
+        <a href="#"
+          ><img
+            src="@/assets/icone-busca.svg"
+            alt=""
+            aria-hidden="true"
+            width="40"
+            height="40"
+          /><span class="sr-only">Faça uma busca</span>
+        </a>
       </li>
       <li>
-        <a href="#"><img src="@/assets/icone-folder2.svg" alt="" /></a>
+        <a href="#"
+          ><img
+            src="@/assets/icone-folder2.svg"
+            alt=""
+            aria-hidden="true"
+            width="40"
+            height="40"
+          /><span class="sr-only">Acesse os arquivos</span></a
+        >
       </li>
     </ul>
-    <button class="filter-btn">
-      <img src="@/assets/icone-ajuste.svg" alt="" />
+    <button class="filter-btn" aria-label="Filtra as listas">
+      <img
+        src="@/assets/icone-ajuste.svg"
+        alt=""
+        aria-hidden="true"
+        width="40"
+        height="40"
+      />
     </button>
   </nav>
 </template>

@@ -9,7 +9,14 @@
           <transition-group appear mode="out-in">
             <li v-for="address in allAddresses" :key="address.cep">
               <div class="address">
-                <img src="@/assets/icone-lugar.svg" class="address__icon" />
+                <img
+                  src="@/assets/icone-lugar.svg"
+                  class="address__icon"
+                  alt=""
+                  aria-hidden="true"
+                  width="32"
+                  height="32"
+                />
                 <div class="address__info">
                   <p class="address__info--primary">
                     {{ address.logradouro }}, {{ address.bairro }}
@@ -21,8 +28,15 @@
                 <button
                   class="address__delete-btn"
                   @click="REMOVE_ADDRESS(address)"
+                  aria-label="Apaga o card de endereço"
                 >
-                  <img src="@/assets/icone-lixo.svg" alt="" />
+                  <img
+                    src="@/assets/icone-lixo.svg"
+                    alt=""
+                    aria-hidden="true"
+                    width="22"
+                    height="22"
+                  />
                 </button>
               </div>
             </li>
@@ -56,7 +70,7 @@ export default {
   padding: 2rem;
   text-align: center;
   font-size: 2.4rem;
-  color: $color-neutral-light-4;
+  color: $color-neutral-dark-2;
 }
 
 .address-list {

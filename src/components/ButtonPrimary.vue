@@ -1,5 +1,10 @@
 <template>
-  <button type="submit" class="btn" @click.prevent="method">
+  <button
+    type="submit"
+    class="btn"
+    @click.prevent="method"
+    :aria-label="ariaLabel"
+  >
     <slot></slot>
   </button>
 </template>
@@ -7,7 +12,7 @@
 <script>
 export default {
   name: "ButtonPrimary",
-  props: { method: { type: Function } },
+  props: { method: { type: Function }, ariaLabel: { type: String } },
 };
 </script>
 

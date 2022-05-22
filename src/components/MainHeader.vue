@@ -6,14 +6,26 @@
         alt=""
         aria-hidden="true"
         class="company__logo"
+        width="50"
+        height="50"
       />
       <h1 class="company__title">Surreal São Paulo</h1>
       <h2 class="company__subtitle">Vtex</h2>
     </div>
     <div class="user">
-      <button class="user__notifications"></button>
+      <button
+        class="user__notifications"
+        aria-label="Checa as notificações do usuário"
+      ></button>
       <p class="user__name">Olá, Joaquim</p>
-      <img src="@/assets/usuario.svg" class="user__avatar" />
+      <img
+        src="@/assets/usuario.svg"
+        class="user__avatar"
+        alt=""
+        aria-hidden="true"
+        width="54"
+        height="54"
+      />
     </div>
   </header>
 </template>
