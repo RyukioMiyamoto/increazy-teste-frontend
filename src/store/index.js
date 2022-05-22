@@ -15,9 +15,10 @@ export default new Vuex.Store({
     },
 
     ADD_ADDRESS(state, payload) {
-      Vue.set(this.state.addresses, payload.cep, payload.rua);
+      Vue.set(this.state.addresses, payload.cep.replace("-", ""), payload);
     },
   },
   actions: {},
   modules: {},
 });
+''

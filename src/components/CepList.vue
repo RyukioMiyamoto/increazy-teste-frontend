@@ -16,26 +16,35 @@
         </li>
       </transition-group>
     </ul>
-    <ButtonPrimary class="btn--generate-address" :method="addEndereco">Gerar Endereços</ButtonPrimary>
+    <ButtonPrimary class="btn--generate-address" :method="addEndereco"
+      >Gerar Endereços</ButtonPrimary
+    >
     <div class="separator"></div>
   </section>
 </template>
 
 <script>
 import AddCep from "@/components/AddCep";
-import { mapMutations } from 'vuex';
+import { mapMutations } from "vuex";
 
 export default {
   name: "CepList",
   components: {
     AddCep,
   },
+  computed: {
+    allCeps() {
+      return Object.values(this.$store.state.ceps);
+    },
+  },
   methods: {
-    ...mapMutations(["ADD_ADDRESS"]), 
+    ...mapMutations(["ADD_ADDRESS"]),
     addEndereco() {
-      this.ADD_ADDRESS({cep: '12247060', rua: 'rua'})
-    }
-  }
+      this.allCeps.forEach((cep) => {
+        this.ADD_ADDRESS(cep)
+      });
+    },
+  },
 };
 </script>
 

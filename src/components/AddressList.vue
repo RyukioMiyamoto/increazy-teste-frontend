@@ -1,23 +1,24 @@
 <template>
   <section class="address-list">
     <ul class="addresses">
-      Lista Endereços
-      <li v-for="address in addresses" :key="address.logradouro">
-        <div class="address">
-          <img src="@/assets/icone-lugar.svg" class="address__icon" />
-          <div class="address__info">
-            <p class="address__info--primary">
-              {{ address.logradouro }}, {{ address.bairro }}
-            </p>
-            <p class="address__ info--secondary">
-              {{ address.cidade }} - {{ address.estado }}
-            </p>
+      <transition-group mode="out-in">
+        <li v-for="address in allCeps" :key="address.cep">
+          <div class="address">
+            <img src="@/assets/icone-lugar.svg" class="address__icon" />
+            <div class="address__info">
+              <p class="address__info--primary">
+                {{ address.logradouro }}, {{ address.bairro }}
+              </p>
+              <p class="address__ info--secondary">
+                {{ address.localidade }} - {{ address.uf }}
+              </p>
+            </div>
+            <button class="address__delete-btn">
+              <img src="@/assets/icone-lixo.svg" alt="" />
+            </button>
           </div>
-          <button class="address__delete-btn">
-            <img src="@/assets/icone-lixo.svg" alt="" />
-          </button>
-        </div>
-      </li>
+        </li>
+      </transition-group>
     </ul>
   </section>
 </template>
@@ -37,6 +38,11 @@ export default {
         },
       ],
     };
+  },
+  computed: {
+    allCeps() {
+      return this.$store.state.addresses;
+    },
   },
 };
 </script>
