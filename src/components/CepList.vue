@@ -12,7 +12,9 @@
           <p class="ceps-item__cep">
             Cep <span>{{ cep.cep }}</span>
           </p>
-          <button class="ceps-item__delete"></button>
+          <button class="ceps-item__delete" @click="deleteCepAndAddress(cep)">
+            x
+          </button>
         </li>
       </transition-group>
     </ul>
@@ -25,7 +27,7 @@
 
 <script>
 import AddCep from "@/components/AddCep";
-import { mapMutations } from "vuex";
+import { mapActions, mapMutations } from "vuex";
 
 export default {
   name: "CepList",
@@ -38,11 +40,17 @@ export default {
     },
   },
   methods: {
-    ...mapMutations(["ADD_ADDRESS"]),
+    ...mapActions(["deleteCepAndAddress"]),
+
+    ...mapMutations(["ADD_ADDRESS", "REMOVE_CEP"]),
     addEndereco() {
       this.allCeps.forEach((cep) => {
-        this.ADD_ADDRESS(cep)
+        this.ADD_ADDRESS(cep);
       });
+    },
+
+    removeCep(cep) {
+      this.REMOVE_CEP(cep);
     },
   },
 };
@@ -89,6 +97,21 @@ export default {
 
     & span {
       color: $color-neutral-light-4;
+    }
+  }
+
+  &__delete {
+    font-size: 2rem;
+    font-weight: 700;
+    color: $color-neutral-light-4;
+    cursor: pointer;
+    margin-left: 2.4rem;
+    transition: 0.25s;
+
+    &:hover,
+    &:focus {
+      transform: scale(1.25);
+      color: #fb1111;
     }
   }
 }

@@ -13,7 +13,10 @@
                 {{ address.localidade }} - {{ address.uf }}
               </p>
             </div>
-            <button class="address__delete-btn">
+            <button
+              class="address__delete-btn"
+              @click="REMOVE_ADDRESS(address)"
+            >
               <img src="@/assets/icone-lixo.svg" alt="" />
             </button>
           </div>
@@ -24,25 +27,16 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
 export default {
   name: "AddressList",
-  data() {
-    return {
-      addresses: [
-        {
-          cep1: "12247060",
-          logradouro: "R Afonso celso",
-          cidade: "SJC",
-          estado: "SP",
-          bairro: "Eug Mello",
-        },
-      ],
-    };
-  },
   computed: {
     allCeps() {
       return this.$store.state.addresses;
     },
+  },
+  methods: {
+    ...mapMutations(["REMOVE_ADDRESS"]),
   },
 };
 </script>

@@ -17,8 +17,21 @@ export default new Vuex.Store({
     ADD_ADDRESS(state, payload) {
       Vue.set(this.state.addresses, payload.cep.replace("-", ""), payload);
     },
+
+    REMOVE_CEP(state, payload) {
+      Vue.delete(this.state.ceps, payload.cep.replace("-", ""));
+    },
+
+    REMOVE_ADDRESS(state, payload) {
+      Vue.delete(this.state.addresses, payload.cep.replace("-", ""));
+    },
   },
-  actions: {},
+  actions: {
+    deleteCepAndAddress(context, payload) {
+      context.commit("REMOVE_CEP", payload);
+      context.commit("REMOVE_ADDRESS", payload);
+    },
+  },
   modules: {},
 });
-''
+("");
