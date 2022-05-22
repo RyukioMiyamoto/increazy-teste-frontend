@@ -8,7 +8,6 @@ export default new Vuex.Store({
     ceps: {},
     addresses: {},
   },
-  getters: {},
   mutations: {
     ADD_CEP(state, payload) {
       Vue.set(this.state.ceps, payload.cep.replace("-", ""), payload);
@@ -32,6 +31,5 @@ export default new Vuex.Store({
       context.commit("REMOVE_ADDRESS", payload);
     },
   },
-  modules: {},
 });
 ("");

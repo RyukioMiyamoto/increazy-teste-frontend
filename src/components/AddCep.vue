@@ -13,7 +13,7 @@
     <ButtonPrimary class="btn--add-cep" :method="addCep"
       ><span></span> Adicionar CEP</ButtonPrimary
     >
-    <transition>
+    <transition mode="out-in">
       <p class="cep-form__message" v-if="message">{{ message }}</p>
     </transition>
   </form>
@@ -53,15 +53,15 @@ export default {
       ) {
         this.showMessage("Favor inserir um CEP no formato válido");
         return;
-      } else {
-        const res = await fetch(`https://viacep.com.br/ws/${this.cep}/json/`);
-        const data = await res.json();
-        if (data.erro) {
-          this.showMessage("CEP não encontrado");
-          return;
-        }
-        this.ADD_CEP(data);
       }
+      const res = await fetch(`https://viacep.com.br/ws/${this.cep}/json/`);
+      const data = await res.json();
+      if (data.erro) {
+        this.showMessage("CEP não encontrado");
+        return;
+      }
+      this.ADD_CEP(data);
+      this.cep = "";
     },
 
     showMessage(message) {

@@ -49,11 +49,13 @@ body {
   opacity: 0;
 }
 
-.v-enter {
-  transform: translateX(-1rem);
-}
+@media screen and (prefers-reduced-motion: no-preference) {
+  .v-enter {
+    transform: translateX(-1rem);
+  }
 
-.v-leave-to {
-  transform: translateX(1rem);
+  .v-leave-to {
+    transform: translateX(1rem);
+  }
 }
 </style>
