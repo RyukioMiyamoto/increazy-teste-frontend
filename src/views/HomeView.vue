@@ -1,16 +1,16 @@
 <template>
   <main>
-    <AddCep />
+    <CepList />
   </main>
 </template>
 
 <script>
-import AddCep from "@/components/AddCep";
+import CepList from "@/components/CepList";
 
 export default {
   name: "HomeView",
   components: {
-    AddCep,
+    CepList,
   },
 };
 </script>

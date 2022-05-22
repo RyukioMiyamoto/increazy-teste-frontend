@@ -26,12 +26,8 @@ export default {};
   &:hover,
   &:focus {
     background-color: rgba($color-primary-dark-1, 0.75);
-    transform: translateY(-0.2rem);
+    transform: translateY(-0.3rem);
     box-shadow: 0 0.6rem 1rem rgba(0, 0, 0, 0.25);
-
-    & span {
-      transform: rotate(180deg) scale(1.325);
-    }
   }
 }
 </style>
