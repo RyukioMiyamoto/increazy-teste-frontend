@@ -1,28 +1,35 @@
 <template>
   <section class="address-list">
-    <ul class="addresses">
-      <transition-group mode="out-in">
-        <li v-for="address in allCeps" :key="address.cep">
-          <div class="address">
-            <img src="@/assets/icone-lugar.svg" class="address__icon" />
-            <div class="address__info">
-              <p class="address__info--primary">
-                {{ address.logradouro }}, {{ address.bairro }}
-              </p>
-              <p class="address__ info--secondary">
-                {{ address.localidade }} - {{ address.uf }}
-              </p>
-            </div>
-            <button
-              class="address__delete-btn"
-              @click="REMOVE_ADDRESS(address)"
-            >
-              <img src="@/assets/icone-lixo.svg" alt="" />
-            </button>
-          </div>
-        </li>
-      </transition-group>
-    </ul>
+    <transition appear mode="out-in">
+      <div v-if="addressesArray.length === 0">
+        <p class="empty">Nenhum CEP gerado ainda</p>
+      </div>
+      <div v-else>
+        <ul class="addresses">
+          <transition-group appear mode="out-in">
+            <li v-for="address in allAddresses" :key="address.cep">
+              <div class="address">
+                <img src="@/assets/icone-lugar.svg" class="address__icon" />
+                <div class="address__info">
+                  <p class="address__info--primary">
+                    {{ address.logradouro }}, {{ address.bairro }}
+                  </p>
+                  <p class="address__ info--secondary">
+                    {{ address.localidade }} - {{ address.uf }}
+                  </p>
+                </div>
+                <button
+                  class="address__delete-btn"
+                  @click="REMOVE_ADDRESS(address)"
+                >
+                  <img src="@/assets/icone-lixo.svg" alt="" />
+                </button>
+              </div>
+            </li>
+          </transition-group>
+        </ul>
+      </div>
+    </transition>
   </section>
 </template>
 
@@ -31,8 +38,11 @@ import { mapMutations } from "vuex";
 export default {
   name: "AddressList",
   computed: {
-    allCeps() {
+    allAddresses() {
       return this.$store.state.addresses;
+    },
+    addressesArray() {
+      return Object.keys(this.$store.state.addresses);
     },
   },
   methods: {
@@ -42,6 +52,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.empty {
+  padding: 2rem;
+  text-align: center;
+  font-size: 2.4rem;
+  color: $color-neutral-light-4;
+}
+
 .address-list {
   @include flexColumn750;
   padding: 0 5rem;

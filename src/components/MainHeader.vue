@@ -77,7 +77,8 @@ export default {
     cursor: pointer;
     transition: transform 0.125s;
 
-    &:hover {
+    &:hover,
+    &:focus {
       transform: scale(1.25);
     }
   }

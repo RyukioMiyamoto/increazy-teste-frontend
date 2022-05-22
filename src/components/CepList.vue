@@ -2,7 +2,7 @@
   <section class="list-container">
     <AddCep class="add-cep" />
     <ul class="ceps-list">
-      <transition-group mode="out-in">
+      <transition-group appear mode="out-in">
         <li
           v-for="(cep, i) in this.$store.state.ceps"
           :key="cep + i"
@@ -21,6 +21,9 @@
     <ButtonPrimary class="btn--generate-address" :method="addEndereco"
       >Gerar Endereços</ButtonPrimary
     >
+    <transition mode="out-in">
+      <p class="no-cep"></p>
+    </transition>
     <div class="separator"></div>
   </section>
 </template>
@@ -34,6 +37,11 @@ export default {
   components: {
     AddCep,
   },
+  data() {
+    return {
+      message: "",
+    };
+  },
   computed: {
     allCeps() {
       return Object.values(this.$store.state.ceps);
@@ -44,6 +52,7 @@ export default {
 
     ...mapMutations(["ADD_ADDRESS", "REMOVE_CEP"]),
     addEndereco() {
+      if (!this.allCeps) return;
       this.allCeps.forEach((cep) => {
         this.ADD_ADDRESS(cep);
       });
@@ -118,7 +127,9 @@ export default {
 
 .btn--generate-address {
   align-self: flex-end;
+  position: relative;
 }
+
 
 .separator {
   display: block;
