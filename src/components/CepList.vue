@@ -18,12 +18,14 @@
         </li>
       </transition-group>
     </ul>
-    <ButtonPrimary class="btn--generate-address" :method="addEndereco"
-      >Gerar Endereços</ButtonPrimary
-    >
-    <transition mode="out-in">
-      <p class="no-cep"></p>
-    </transition>
+    <div class="btn--generate-address">
+      <ButtonPrimary :method="addEndereco" id="btn--generate-address"
+        >Gerar Endereços</ButtonPrimary
+      >
+      <transition>
+        <p class="no-cep" v-if="noCep">{{ noCep }}</p>
+      </transition>
+    </div>
     <div class="separator"></div>
   </section>
 </template>
@@ -40,6 +42,7 @@ export default {
   data() {
     return {
       message: "",
+      noCep: "",
     };
   },
   computed: {
@@ -51,8 +54,18 @@ export default {
     ...mapActions(["deleteCepAndAddress"]),
 
     ...mapMutations(["ADD_ADDRESS", "REMOVE_CEP"]),
+
     addEndereco() {
-      if (!this.allCeps) return;
+      if (this.allCeps.length === 0) {
+        this.noCep = "Nenhum CEP listado";
+        document.getElementById("btn--generate-address").disabled = true;
+
+        setTimeout(() => {
+          this.noCep = "";
+          document.getElementById("btn--generate-address").disabled = false;
+          return;
+        }, 1000);
+      }
       this.allCeps.forEach((cep) => {
         this.ADD_ADDRESS(cep);
       });
@@ -119,7 +132,7 @@ export default {
 
     &:hover,
     &:focus {
-      transform: scale(1.25);
+      transform: scale(1.5);
       color: #fb1111;
     }
   }
@@ -130,6 +143,12 @@ export default {
   position: relative;
 }
 
+.no-cep {
+  text-align: center;
+  color: $color-neutral-light-4;
+  position: absolute;
+  bottom: -55%;
+}
 
 .separator {
   display: block;

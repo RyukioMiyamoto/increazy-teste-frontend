@@ -79,7 +79,7 @@ export default {
 
     &:hover,
     &:focus {
-      transform: scale(1.25);
+      transform: scale(1.5);
     }
   }
 

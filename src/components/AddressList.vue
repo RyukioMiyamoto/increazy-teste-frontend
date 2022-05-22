@@ -2,7 +2,7 @@
   <section class="address-list">
     <transition appear mode="out-in">
       <div v-if="addressesArray.length === 0">
-        <p class="empty">Nenhum CEP gerado ainda</p>
+        <p class="empty">Nenhum endereço listado</p>
       </div>
       <div v-else>
         <ul class="addresses">
@@ -108,7 +108,7 @@ export default {
 
     &:hover,
     &:focus {
-      transform: scale(1.25);
+      transform: scale(1.5);
     }
   }
 }
