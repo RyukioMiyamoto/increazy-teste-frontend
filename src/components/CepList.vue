@@ -2,7 +2,7 @@
   <section class="list-container">
     <AddCep class="add-cep" />
     <ul class="ceps-list">
-      <li v-for="cep in lista" :key="cep" class="ceps-item">
+      <li v-for="(cep, i) in lista" :key="cep + i" class="ceps-item">
         <div class="ceps-item__icon"></div>
         <p class="ceps-item__cep">
           Cep <span>{{ cep.rua }}</span>
@@ -28,6 +28,7 @@ export default {
       lista: [
         { cep: "cep1", rua: "13100231" },
         { cep: "cep2", rua: "12247060" },
+        { cep: "cep3", rua: "12247070" },
       ],
     };
   },
@@ -36,9 +37,7 @@ export default {
 
 <style lang="scss" scoped>
 .list-container {
-  display: flex;
-  flex-direction: column;
-  max-width: 75rem;
+  @include flexColumn750;
   padding: 4rem 5rem;
 }
 
@@ -90,6 +89,6 @@ export default {
   height: 1px;
   width: 100%;
   background-color: $color-neutral-light-4;
-  margin: 6rem 0;
+  margin-top: 6rem;
 }
 </style>

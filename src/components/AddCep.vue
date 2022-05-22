@@ -36,7 +36,7 @@ export default {
     overflow: visible;
 
     &::placeholder {
-      color: 75818C;
+      color: $color-neutral-dark-3;
       font-weight: 400;
     }
 
