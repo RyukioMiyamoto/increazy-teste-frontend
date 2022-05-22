@@ -78,7 +78,7 @@ export default {
     transition: transform 0.125s;
 
     &:hover {
-      transform: scale(1.125);
+      transform: scale(1.25);
     }
   }
 
