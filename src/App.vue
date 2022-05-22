@@ -39,4 +39,21 @@ body {
   top: 1000%;
   right: 1000%;
 }
+
+.v-enter-active,
+.v-leave-active {
+  transition: 0.25s;
+}
+.v-enter,
+.v-leave-to {
+  opacity: 0;
+}
+
+.v-enter {
+  transform: translateX(-1rem);
+}
+
+.v-leave-to {
+  transform: translateX(1rem);
+}
 </style>
