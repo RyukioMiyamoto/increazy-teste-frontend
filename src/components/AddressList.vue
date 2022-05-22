@@ -35,13 +35,6 @@ export default {
           estado: "SP",
           bairro: "Eug Mello",
         },
-        {
-          cep2: "13100231",
-          logradouro: "R Serra do navio",
-          cidade: "CPS",
-          estado: "SP",
-          bairro: "Paranapanema",
-        },
       ],
     };
   },

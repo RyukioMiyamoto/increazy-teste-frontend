@@ -2,13 +2,19 @@
   <section class="list-container">
     <AddCep class="add-cep" />
     <ul class="ceps-list">
-      <li v-for="(cep, i) in lista" :key="cep + i" class="ceps-item">
-        <div class="ceps-item__icon"></div>
-        <p class="ceps-item__cep">
-          Cep <span>{{ cep.rua }}</span>
-        </p>
-        <button class="ceps-item__delete"></button>
-      </li>
+      <transition-group mode="out-in">
+        <li
+          v-for="(cep, i) in this.$store.state.ceps"
+          :key="cep + i"
+          class="ceps-item"
+        >
+          <div class="ceps-item__icon"></div>
+          <p class="ceps-item__cep">
+            Cep <span>{{ cep }}</span>
+          </p>
+          <button class="ceps-item__delete"></button>
+        </li>
+      </transition-group>
     </ul>
     <ButtonPrimary class="btn--generate-address">Gerar Endereços</ButtonPrimary>
     <div class="separator"></div>
@@ -22,15 +28,6 @@ export default {
   name: "CepList",
   components: {
     AddCep,
-  },
-  data() {
-    return {
-      lista: [
-        { cep: "cep1", rua: "13100231" },
-        { cep: "cep2", rua: "12247060" },
-        { cep: "cep3", rua: "12247070" },
-      ],
-    };
   },
 };
 </script>
@@ -57,6 +54,7 @@ export default {
 .ceps-item {
   display: flex;
   align-items: center;
+  margin-bottom: 1.4rem;
 
   &__icon {
     display: block;

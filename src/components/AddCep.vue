@@ -8,16 +8,67 @@
       name="cep"
       class="cep-form__input"
       placeholder="Insira um CEP"
+      v-model="cep"
     />
-    <ButtonPrimary class="btn--add-cep"
+    <ButtonPrimary class="btn--add-cep" :method="addCep"
       ><span></span> Adicionar CEP</ButtonPrimary
     >
+    <transition>
+      <p class="cep-form__message" v-if="message">{{ message }}</p>
+    </transition>
   </form>
 </template>
 
 <script>
+import { mapMutations } from "vuex";
 export default {
   name: "AddCep",
+  data() {
+    return {
+      cep: "",
+      message: "",
+    };
+  },
+  computed: {
+    allCeps() {
+      return this.$store.state.ceps;
+    },
+    cepNumber() {
+      return Number(this.cep);
+    },
+  },
+
+  methods: {
+    ...mapMutations(["ADD_CEP"]),
+
+    addCep() {
+      if (
+        isNaN(this.cep) ||
+        this.cepNumber <= 0 ||
+        this.cepNumber % 1 !== 0 ||
+        this.cepNumber.length < 8
+      ) {
+        this.showMessage("Insira um CEP em formato válido");
+        return;
+      } else if (this.allCeps.includes(this.cepNumber)) {
+        this.showMessage("CEP já listado");
+        return;
+      }
+      this.ADD_CEP(this.cepNumber);
+      this.cep = "";
+    },
+
+    showMessage(message) {
+      this.message = message;
+      document.querySelector("button.btn--add-cep").disabled = true;
+      this.cep = "";
+
+      setTimeout(() => {
+        this.message = "";
+        document.querySelector("button.btn--add-cep").disabled = false;
+      }, 1000);
+    },
+  },
 };
 </script>
 
@@ -25,6 +76,7 @@ export default {
 .cep-form {
   display: flex;
   justify-content: space-between;
+  position: relative;
 
   &__input {
     width: 29rem;
@@ -46,6 +98,14 @@ export default {
     }
   }
 
+  &__message {
+    font-size: 1.4rem;
+    color: red;
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+  }
+
   .btn--add-cep {
     & span {
       display: inline-block;
@@ -56,8 +116,8 @@ export default {
       transition: 0.5s;
     }
 
-    &:hover,
-    &:focus {
+    &:not(:disabled):hover,
+    &:not(:disabled):focus {
       & span {
         transform: rotate(180deg) scale(1.325);
       }

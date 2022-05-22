@@ -1,11 +1,14 @@
 <template>
-  <button type="submit" class="btn">
+  <button type="submit" class="btn" @click.prevent="method">
     <slot></slot>
   </button>
 </template>
 
 <script>
-export default {};
+export default {
+  name: "ButtonPrimary",
+  props: { method: { type: Function } },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -23,11 +26,15 @@ export default {};
   cursor: pointer;
   transition: 0.25s;
 
-  &:hover,
-  &:focus {
+  &:not(:disabled):hover,
+  &:not(:disabled):focus {
     background-color: rgba($color-primary-dark-1, 0.75);
     transform: translateY(-0.3rem);
     box-shadow: 0 0.6rem 1rem rgba(0, 0, 0, 0.25);
+  }
+
+  &:disabled {
+    background-color: rgba($color-primary-dark-1, 0.325);
   }
 }
 </style>
