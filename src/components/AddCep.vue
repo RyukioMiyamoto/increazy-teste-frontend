@@ -35,7 +35,7 @@ export default {
       return Object.keys(this.$store.state.ceps);
     },
     cleanCep() {
-      return this.cep.replace("-", "");
+      return this.cep.replace("-", "").trim("");
     },
   },
   methods: {
@@ -63,6 +63,7 @@ export default {
         }
         this.ADD_CEP(data);
         this.cep = "";
+        document.getElementById("cep").focus();
       } catch {
         this.showMessage("Favor inserir um CEP no formato válido");
         return;
@@ -72,6 +73,7 @@ export default {
     showMessage(message) {
       this.message = message;
       document.querySelector("button.btn--add-cep").disabled = true;
+      document.getElementById("cep").focus();
 
       setTimeout(() => {
         this.message = "";
