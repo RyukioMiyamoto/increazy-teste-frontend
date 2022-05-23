@@ -3,11 +3,11 @@
     <label for="cep" class="sr-only">Insira um CEP</label>
     <input
       type="tel"
-      maxlength="8"
+      maxlength="9"
       id="cep"
       name="cep"
       class="cep-form__input"
-      placeholder="Insira um CEP"
+      placeholder="Insira um CEP (00000-000)"
       v-model="cep"
     />
     <ButtonPrimary class="btn--add-cep" :method="addCep"
@@ -32,40 +32,47 @@ export default {
   },
   computed: {
     allCeps() {
-      return this.$store.state.ceps;
+      return Object.keys(this.$store.state.ceps);
     },
     cepNumber() {
-      return Number(this.cep);
+      return Number(this.cep.replace("-", ""));
     },
   },
-
   methods: {
     ...mapMutations(["ADD_CEP"]),
 
     async addCep() {
-      if (Object.keys(this.allCeps).length >= 50) {
+      if (this.allCeps.length >= 50) {
         this.showMessage("Limite de 50 CEPS atingido");
         return;
-      } else if (Object.keys(this.allCeps).includes(this.cep)) {
+      } else if (this.allCeps.includes(this.cep.replace("-", ""))) {
         this.showMessage("CEP já listado");
         return;
       } else if (
-        this.cepNumber.length < 8 ||
-        this.cepNumber === 0 ||
-        isNaN(this.cep) ||
+        isNaN(this.cep.replace("-", "")) ||
+        this.cep.length < 8 ||
+        this.cepNumber == 0 ||
         this.cepNumber % 1 !== 0
       ) {
         this.showMessage("Favor inserir um CEP no formato válido");
         return;
       }
-      const res = await fetch(`https://viacep.com.br/ws/${this.cep}/json/`);
-      const data = await res.json();
-      if (data.erro) {
-        this.showMessage("CEP não encontrado");
+      try {
+        const res = await fetch(
+          `https://viacep.com.br/ws/${this.cepNumber}/json/`
+        );
+        const data = await res.json();
+        if (data.erro) {
+          this.showMessage("CEP não encontrado");
+          return;
+        }
+        this.ADD_CEP(data);
+      } catch {
+        this.showMessage("Favor inserir um CEP no formato válido");
         return;
+      } finally {
+        this.cep = "";
       }
-      this.ADD_CEP(data);
-      this.cep = "";
     },
 
     showMessage(message) {
