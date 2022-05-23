@@ -28,6 +28,7 @@ export default {
     return {
       cep: "",
       message: "",
+      didFetch: null,
     };
   },
   computed: {
@@ -84,13 +85,15 @@ export default {
     getLocalStorage() {
       const storedCep = JSON.parse(window.localStorage.getItem("ceps"));
       if (!storedCep) return;
+      const cepPushed = storedCep.filter((cep) => !this.allCeps.includes(cep));
 
-      storedCep.forEach((cep) => {
+      cepPushed.forEach((cep) => {
         this.cep = cep;
         this.addCep();
       });
     },
   },
+
   created() {
     this.getLocalStorage();
   },
