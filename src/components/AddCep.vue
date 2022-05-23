@@ -3,12 +3,12 @@
     <label for="cep" class="sr-only">Insira um CEP</label>
     <input
       type="tel"
-      maxlength="9"
       id="cep"
       name="cep"
       class="cep-form__input"
-      placeholder="Insira um CEP (00000-000)"
+      placeholder="Insira um CEP"
       v-model="cep"
+      v-mask="'#####-###'"
     />
     <ButtonPrimary class="btn--add-cep" :method="addCep"
       ><span></span> Adicionar CEP</ButtonPrimary
@@ -34,8 +34,8 @@ export default {
     allCeps() {
       return Object.keys(this.$store.state.ceps);
     },
-    cepNumber() {
-      return Number(this.cep.replace("-", ""));
+    cleanCep() {
+      return this.cep.replace("-", "");
     },
   },
   methods: {
@@ -45,21 +45,16 @@ export default {
       if (this.allCeps.length >= 50) {
         this.showMessage("Limite de 50 CEPS atingido");
         return;
-      } else if (this.allCeps.includes(this.cep.replace("-", ""))) {
+      } else if (this.allCeps.includes(this.cleanCep)) {
         this.showMessage("CEP já listado");
         return;
-      } else if (
-        isNaN(this.cep.replace("-", "")) ||
-        this.cep.length < 8 ||
-        this.cepNumber == 0 ||
-        this.cepNumber % 1 !== 0
-      ) {
+      } else if (this.cleanCep.length < 8) {
         this.showMessage("Favor inserir um CEP no formato válido");
         return;
       }
       try {
         const res = await fetch(
-          `https://viacep.com.br/ws/${this.cepNumber}/json/`
+          `https://viacep.com.br/ws/${this.cleanCep}/json/`
         );
         const data = await res.json();
         if (data.erro) {
@@ -67,18 +62,16 @@ export default {
           return;
         }
         this.ADD_CEP(data);
+        this.cep = "";
       } catch {
         this.showMessage("Favor inserir um CEP no formato válido");
         return;
-      } finally {
-        this.cep = "";
       }
     },
 
     showMessage(message) {
       this.message = message;
       document.querySelector("button.btn--add-cep").disabled = true;
-      this.cep = "";
 
       setTimeout(() => {
         this.message = "";
