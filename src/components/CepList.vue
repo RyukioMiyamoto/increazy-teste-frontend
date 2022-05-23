@@ -157,21 +157,23 @@ export default {
   }
 
   &__delete {
+    align-self: flex-start;
     font-size: 2rem;
-    font-weight: 700;
     color: $color-neutral-light-4;
     cursor: pointer;
-    margin-left: 2.4rem;
+    margin-left: 1rem;
     transition: 0.25s;
+    transform: translateY(-25%);
 
     @include screen-small {
-      font-size: 1.4rem;
+      font-weight: 700;
+      color: #f93232;
     }
 
     &:hover,
     &:focus {
-      transform: scale(1.5);
-      color: #fb1111;
+      font-weight: 700;
+      color: #f93232;
     }
   }
 }

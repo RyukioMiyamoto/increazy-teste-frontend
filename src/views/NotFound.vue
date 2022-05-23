@@ -1,8 +1,8 @@
 <template>
-    <div>
-      <p>Página não encontrada</p>
-      <router-link to="/">Volte à aplicação</router-link>
-    </div>
+  <div>
+    <p>Página não encontrada</p>
+    <router-link to="/">Volte à aplicação</router-link>
+  </div>
 </template>
 
 <script>
@@ -32,9 +32,34 @@ p {
   }
 }
 
-a,
-a:visited,
-a:link {
-  color: $color-neutral-dark-2;
+a {
+  transition: 0.25s;
+
+  &::after {
+    display: block;
+    content: "";
+    height: 0.1rem;
+    transform: scaleX(0);
+    background-color: currentColor;
+    transition: transform 0.25s;
+    transform-origin: right;
+  }
+
+  a,
+  a:visited,
+  a:link {
+    color: $color-neutral-dark-2;
+  }
+
+  &:hover,
+  &:focus {
+    color: $color-primary-dark-1;
+    transform: scale(1.125);
+
+    &::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+  }
 }
 </style>
