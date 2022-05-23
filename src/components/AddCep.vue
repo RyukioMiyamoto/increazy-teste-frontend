@@ -88,6 +88,8 @@ export default {
 
     getLocalStorage() {
       const storedCep = JSON.parse(window.localStorage.getItem("ceps"));
+      if (!storedCep) return;
+
       storedCep.forEach((cep) => {
         this.cep = cep;
         this.addCep();
