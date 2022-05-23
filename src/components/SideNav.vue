@@ -2,7 +2,7 @@
   <nav class="sidenav">
     <ul class="actions">
       <li>
-        <a href="#"
+        <router-link to="/notfound"
           ><img
             src="@/assets/icone-busca.svg"
             alt=""
@@ -10,17 +10,17 @@
             width="40"
             height="40"
           /><span class="sr-only">Faça uma busca</span>
-        </a>
+        </router-link>
       </li>
       <li>
-        <a href="#"
-          ><img
+        <router-link to="/notfound">
+          <img
             src="@/assets/icone-folder2.svg"
             alt=""
             aria-hidden="true"
             width="40"
             height="40"
-          /><span class="sr-only">Acesse os arquivos</span></a
+          /><span class="sr-only">Acesse os arquivos</span></router-link
         >
       </li>
     </ul>

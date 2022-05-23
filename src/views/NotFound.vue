@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <p>Página não encontrada</p>
-    <router-link to="/">Volte à aplicação</router-link>
-  </div>
+    <div>
+      <p>Página não encontrada</p>
+      <router-link to="/">Volte à aplicação</router-link>
+    </div>
 </template>
 
 <script>

@@ -2,7 +2,9 @@
   <div id="app">
     <MainHeader />
     <SideNav />
-    <router-view></router-view>
+    <transition appear mode="out-in">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 

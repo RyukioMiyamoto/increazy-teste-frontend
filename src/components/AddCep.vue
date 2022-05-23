@@ -76,7 +76,7 @@ export default {
       setTimeout(() => {
         this.message = "";
         document.querySelector("button.btn--add-cep").disabled = false;
-      }, 1000);
+      }, 1500);
     },
 
     getLocalStorage() {

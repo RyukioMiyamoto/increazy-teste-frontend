@@ -1,22 +1,26 @@
 <template>
   <header class="header">
     <div class="company">
-      <img
-        src="@/assets/logo.svg"
-        alt=""
-        aria-hidden="true"
-        class="company__logo"
-        width="50"
-        height="50"
-      />
+      <router-link to="/">
+        <img
+          src="@/assets/logo.svg"
+          alt=""
+          aria-hidden="true"
+          class="company__logo"
+          width="50"
+          height="50"
+        />
+      </router-link>
       <h1 class="company__title">Surreal São Paulo</h1>
       <h2 class="company__subtitle">Vtex</h2>
     </div>
     <div class="user">
-      <button
+      <router-link
+        to="/notfound"
         class="user__notifications"
-        aria-label="Checa as notificações do usuário"
-      ></button>
+        aria-label="Checa as notificações do
+        usuário"
+      ></router-link>
       <p class="user__name">Olá, Joaquim</p>
       <img
         src="@/assets/usuario.svg"

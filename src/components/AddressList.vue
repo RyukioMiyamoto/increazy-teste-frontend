@@ -1,49 +1,47 @@
 <template>
   <section class="address-list">
-    <transition appear mode="out-in">
-      <div v-if="addressesArray.length === 0">
+    <transition v-if="addressesArray.length === 0" appear mode="out-in">
+      <div>
         <p class="empty">Nenhum endereço listado</p>
       </div>
-      <div v-else>
-        <ul class="addresses">
-          <transition-group appear mode="out-in">
-            <li v-for="address in allAddresses" :key="address.cep">
-              <div class="address">
-                <img
-                  src="@/assets/icone-lugar.svg"
-                  class="address__icon"
-                  alt=""
-                  aria-hidden="true"
-                  width="32"
-                  height="32"
-                />
-                <div class="address__info">
-                  <p class="address__info--primary">
-                    {{ address.logradouro }}, {{ address.bairro }}
-                  </p>
-                  <p class="address__info--secondary">
-                    {{ address.localidade }} - {{ address.uf }}
-                  </p>
-                </div>
-                <p class="address__info--tertiary">{{ address.cep }}</p>
-                <button
-                  class="address__delete-btn"
-                  @click="REMOVE_ADDRESS(address)"
-                  aria-label="Apaga o card de endereço"
-                >
-                  <img
-                    src="@/assets/icone-lixo.svg"
-                    alt=""
-                    aria-hidden="true"
-                    width="22"
-                    height="22"
-                  />
-                </button>
-              </div>
-            </li>
-          </transition-group>
-        </ul>
-      </div>
+    </transition>
+    <transition tag="div" v-else appear mode="out-in">
+      <ul tag="ul" class="addresses" mode="out-in">
+        <li v-for="address in allAddresses" :key="address.cep">
+          <div class="address">
+            <img
+              src="@/assets/icone-lugar.svg"
+              class="address__icon"
+              alt=""
+              aria-hidden="true"
+              width="32"
+              height="32"
+            />
+            <div class="address__info">
+              <p class="address__info--primary">
+                {{ address.logradouro }}, {{ address.bairro }}
+              </p>
+              <p class="address__info--secondary">
+                {{ address.localidade }} - {{ address.uf }}
+              </p>
+            </div>
+            <p class="address__info--tertiary">{{ address.cep }}</p>
+            <button
+              class="address__delete-btn"
+              @click="REMOVE_ADDRESS(address)"
+              aria-label="Apaga o card de endereço"
+            >
+              <img
+                src="@/assets/icone-lixo.svg"
+                alt=""
+                aria-hidden="true"
+                width="22"
+                height="22"
+              />
+            </button>
+          </div>
+        </li>
+      </ul>
     </transition>
   </section>
 </template>

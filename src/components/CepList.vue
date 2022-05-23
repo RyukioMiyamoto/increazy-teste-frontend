@@ -35,7 +35,7 @@
         ariaLabel="Gera uma lista de endereços"
         >Gerar Endereços</ButtonPrimary
       >
-      <transition>
+      <transition mode="out-in">
         <p class="no-cep" v-if="noCep">{{ noCep }}</p>
       </transition>
     </div>
