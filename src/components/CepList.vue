@@ -23,7 +23,7 @@
     </transition-group>
     <div class="btn--generate-address">
       <ButtonPrimary
-        :method="addEndereco"
+        :method="addAddress"
         id="btn--generate-address"
         ariaLabel="Gera uma lista de endereços"
         >Gerar Endereços</ButtonPrimary
@@ -61,7 +61,7 @@ export default {
 
     ...mapMutations(["ADD_ADDRESS", "REMOVE_CEP"]),
 
-    addEndereco() {
+    addAddress() {
       if (this.allCeps.length === 0) {
         this.noCep = "Nenhum CEP listado";
         document.getElementById("btn--generate-address").disabled = true;
