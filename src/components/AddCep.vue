@@ -85,6 +85,17 @@ export default {
         document.querySelector("button.btn--add-cep").disabled = false;
       }, 1000);
     },
+
+    getLocalStorage() {
+      const storedCep = JSON.parse(window.localStorage.getItem("ceps"));
+      storedCep.forEach((cep) => {
+        this.cep = cep;
+        this.addCep();
+      });
+    },
+  },
+  created() {
+    this.getLocalStorage();
   },
 };
 </script>

@@ -11,6 +11,10 @@ export default new Vuex.Store({
   mutations: {
     ADD_CEP(state, payload) {
       Vue.set(this.state.ceps, payload.cep.replace("-", ""), payload);
+      window.localStorage.setItem(
+        "ceps",
+        JSON.stringify(Object.keys(this.state.ceps))
+      );
     },
 
     ADD_ADDRESS(state, payload) {
@@ -19,6 +23,10 @@ export default new Vuex.Store({
 
     REMOVE_CEP(state, payload) {
       Vue.delete(this.state.ceps, payload.cep.replace("-", ""));
+      window.localStorage.setItem(
+        "ceps",
+        JSON.stringify(Object.keys(this.state.ceps))
+      );
     },
 
     REMOVE_ADDRESS(state, payload) {
