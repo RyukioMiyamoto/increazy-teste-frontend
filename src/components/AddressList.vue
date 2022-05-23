@@ -139,7 +139,6 @@ export default {
 
   &__info {
     &--primary {
-      max-width: 24ch;
       font-size: 2rem;
       font-weight: 700;
       color: $color-neutral-dark-2;

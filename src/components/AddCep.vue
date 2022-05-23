@@ -126,12 +126,12 @@ export default {
     }
 
     &::placeholder {
-      text-align: center;
       letter-spacing: 0.01rem;
       font-weight: 400;
       color: $color-neutral-dark-3;
 
       @include screen-large {
+        text-align: center;
         font-size: 1.2rem;
       }
 
