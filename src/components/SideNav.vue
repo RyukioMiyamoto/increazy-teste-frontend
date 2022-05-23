@@ -60,6 +60,7 @@ export default {
     padding: 1rem;
     position: fixed;
     bottom: 0;
+    z-index: 10;
   }
 }
 

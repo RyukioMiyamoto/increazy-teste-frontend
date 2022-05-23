@@ -38,9 +38,7 @@ body {
 }
 
 .sr-only {
-  background-color: red;
   position: absolute;
-  top: 1000%;
   right: 1000%;
 }
 

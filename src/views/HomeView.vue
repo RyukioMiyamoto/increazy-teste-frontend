@@ -21,6 +21,6 @@ export default {
 <style lang="scss">
 main {
   min-height: 100vh;
-  margin-bottom: 6.4rem;
+  margin-bottom: 10rem;
 }
 </style>

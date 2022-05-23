@@ -155,11 +155,13 @@ export default {
 }
 
 .btn--generate-address {
+  align-self: end;
   position: relative;
-}
-
-#btn--generate-address {
-  margin: 0 auto;
+  
+  @include screen-large {
+    align-self: center;
+    margin: 0 auto;
+  }
 }
 
 .no-cep {

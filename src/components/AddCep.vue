@@ -43,7 +43,10 @@ export default {
     ...mapMutations(["ADD_CEP"]),
 
     async addCep() {
-      if (Object.keys(this.allCeps).includes(this.cep)) {
+      if (Object.keys(this.allCeps).length >= 50) {
+        this.showMessage("Limite de 50 CEPS atingido");
+        return;
+      } else if (Object.keys(this.allCeps).includes(this.cep)) {
         this.showMessage("CEP já listado");
         return;
       } else if (

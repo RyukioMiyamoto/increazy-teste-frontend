@@ -42,7 +42,6 @@ export default {
     background-color: rgba($color-primary-dark-1, 0.325);
   }
   @include screen-large {
-    max-width: 50%;
     padding: 0.8rem 1.5rem;
     font-size: 1.4rem;
     align-self: center;
