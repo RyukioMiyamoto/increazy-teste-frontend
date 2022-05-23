@@ -116,8 +116,9 @@ export default {
     overflow: visible;
 
     &::placeholder {
-      color: $color-neutral-dark-3;
+      letter-spacing: 0.01rem;
       font-weight: 400;
+      color: $color-neutral-dark-3;
 
       @include screen-large {
         font-size: 1.2rem;

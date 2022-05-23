@@ -25,6 +25,7 @@
                     {{ address.localidade }} - {{ address.uf }}
                   </p>
                 </div>
+                <p class="address__info--tertiary">{{ address.cep }}</p>
                 <button
                   class="address__delete-btn"
                   @click="REMOVE_ADDRESS(address)"
@@ -94,7 +95,7 @@ export default {
 
 .address {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto 1fr auto auto;
   align-items: center;
 
   width: 61rem;
@@ -115,6 +116,7 @@ export default {
 
   &__info {
     &--primary {
+      max-width: 24ch;
       font-size: 2rem;
       font-weight: 700;
       color: $color-neutral-dark-2;
@@ -126,11 +128,39 @@ export default {
 
     &--secondary {
       font-size: 1.6rem;
+      letter-spacing: 0.01rem;
       font-weight: 400;
       color: $color-neutral-dark-1;
 
       @include screen-medium {
         font-size: 1.2rem;
+      }
+    }
+
+    &--tertiary {
+      padding: 1rem 4rem 1rem 1rem;
+      letter-spacing: 0.01rem;
+      color: $color-primary-light-1;
+      position: relative;
+
+      &::after {
+        display: block;
+        content: "";
+        width: 0.1rem;
+        height: 150%;
+        background-color: $color-neutral-light-4;
+        position: absolute;
+        top: 50%;
+        right: 15%;
+        transform: translateY(-50%);
+
+        @include screen-medium {
+          display: none;
+        }
+      }
+
+      @include screen-medium {
+        padding: 0 1rem 0 0;
       }
     }
   }
@@ -157,7 +187,7 @@ export default {
   }
 
   @include screen-medium {
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 2fr auto auto;
     max-width: 100%;
     padding: 1.6rem 2.4rem;
     justify-content: center;

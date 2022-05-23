@@ -86,6 +86,7 @@ export default {
   &__subtitle {
     text-transform: uppercase;
     font-size: 1.2rem;
+    letter-spacing: 0.02rem;
     font-weight: 400;
 
     @include screen-medium {
