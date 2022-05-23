@@ -8,7 +8,14 @@
         class="ceps-item"
         role="listitem"
       >
-        <div class="ceps-item__icon"></div>
+        <div>
+          <img
+            src="@/assets/icone-lugar.svg"
+            alt=""
+            class="ceps-item__icon"
+            aria-hidden="true"
+          />
+        </div>
         <p class="ceps-item__cep">
           Cep <span>{{ cep.cep }}</span>
         </p>
@@ -94,6 +101,11 @@ export default {
     padding: 3rem;
     margin: 0 auto;
   }
+
+  @include screen-small {
+    max-width: 28rem;
+    padding: 1rem;
+  }
 }
 
 .ceps-list {
@@ -115,12 +127,14 @@ export default {
   margin-bottom: 1.4rem;
 
   &__icon {
-    display: block;
-    content: "";
     width: 3.2rem;
     height: 3.2rem;
-    background: url("@/assets/icone-lugar.svg") no-repeat center center;
     margin-right: 2.4rem;
+
+    @include screen-small {
+      width: 2.4rem;
+      height: 2.4rem;
+    }
   }
 
   &__cep {
@@ -136,6 +150,10 @@ export default {
     @include screen-medium {
       font-size: 1.6rem;
     }
+
+    @include screen-small {
+      font-size: 1.4rem;
+    }
   }
 
   &__delete {
@@ -145,6 +163,10 @@ export default {
     cursor: pointer;
     margin-left: 2.4rem;
     transition: 0.25s;
+
+    @include screen-small {
+      font-size: 1.4rem;
+    }
 
     &:hover,
     &:focus {
@@ -157,10 +179,14 @@ export default {
 .btn--generate-address {
   align-self: end;
   position: relative;
-  
+
   @include screen-large {
     align-self: center;
     margin: 0 auto;
+  }
+
+  @include screen-small {
+    font-size: 1.2rem;
   }
 }
 

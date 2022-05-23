@@ -46,5 +46,10 @@ export default {
     font-size: 1.4rem;
     align-self: center;
   }
+
+  @include screen-small {
+    width: 20rem;
+    padding: 1rem 0.6rem;
+  }
 }
 </style>

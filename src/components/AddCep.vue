@@ -115,7 +115,18 @@ export default {
     transition: 0.25s;
     overflow: visible;
 
+    @include screen-large {
+      max-width: 50%;
+      margin-right: 1rem;
+      padding: 0.8rem 1.5rem;
+    }
+
+    @include screen-small {
+      padding: 1rem;
+    }
+
     &::placeholder {
+      text-align: center;
       letter-spacing: 0.01rem;
       font-weight: 400;
       color: $color-neutral-dark-3;
@@ -123,17 +134,15 @@ export default {
       @include screen-large {
         font-size: 1.2rem;
       }
+
+      @include screen-small {
+        font-size: 0.9rem;
+      }
     }
 
     &:focus {
       border-color: $color-primary-dark-1;
       box-shadow: 0 0.6rem 1rem rgba(0, 0, 0, 0.25);
-    }
-
-    @include screen-large {
-      max-width: 50%;
-      margin-right: 1rem;
-      padding: 0.8rem 1.5rem;
     }
   }
 
@@ -156,6 +165,10 @@ export default {
   .btn--add-cep {
     @include screen-large {
       margin-right: auto;
+    }
+
+    @include screen-small {
+      font-size: 1.2rem;
     }
 
     & span {

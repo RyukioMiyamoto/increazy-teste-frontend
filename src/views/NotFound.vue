@@ -25,6 +25,11 @@ p {
   letter-spacing: 0.5rem;
   font-size: 4.2rem;
   color: $color-neutral-light-4;
+  margin-bottom: 1rem;
+
+  @include screen-medium {
+    font-size: 2.4rem;
+  }
 }
 
 a,

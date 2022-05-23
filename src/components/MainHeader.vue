@@ -51,6 +51,10 @@ export default {
     padding: 1rem;
     justify-content: center;
   }
+
+  @include screen-small {
+    padding: 0.5rem;
+  }
 }
 
 .company {
@@ -63,6 +67,12 @@ export default {
 
   @include screen-medium {
     width: 20rem;
+  }
+
+  @include screen-small {
+    width: 15rem;
+    padding: 1rem 0.5rem 0.5rem 0.5rem;
+    font-size: 1rem;
   }
 
   &__logo {
@@ -80,6 +90,10 @@ export default {
 
     @include screen-medium {
       font-size: 1.4rem;
+    }
+
+    @include screen-small {
+      font-size: 1.2rem;
     }
   }
 
@@ -103,6 +117,10 @@ export default {
   gap: 1.6rem;
   position: relative;
 
+  @include screen-small {
+    gap: 1rem;
+  }
+
   &__notifications {
     width: 3.2rem;
     height: 3.2rem;
@@ -122,6 +140,11 @@ export default {
 
     @include screen-medium {
       margin-right: 0;
+    }
+
+    @include screen-small {
+      width: 2.4rem;
+      height: 2.4rem;
     }
   }
 
@@ -146,6 +169,10 @@ export default {
     &__avatar {
       display: none;
     }
+  }
+
+  @include screen-small {
+    font-size: 1.2rem;
   }
 }
 </style>

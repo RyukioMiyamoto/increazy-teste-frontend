@@ -21,7 +21,7 @@
                   <p class="address__info--primary">
                     {{ address.logradouro }}, {{ address.bairro }}
                   </p>
-                  <p class="address__ info--secondary">
+                  <p class="address__info--secondary">
                     {{ address.localidade }} - {{ address.uf }}
                   </p>
                 </div>
@@ -86,6 +86,11 @@ export default {
     max-width: 65rem;
     margin: 0 auto;
   }
+
+  @include screen-small {
+    max-width: 28rem;
+    padding: 1rem 0;
+  }
 }
 
 .addresses {
@@ -102,6 +107,24 @@ export default {
   padding: 3.4rem 2rem 3.4rem 1.6rem;
   border-radius: 0.8rem;
   box-shadow: 0 0.4rem 2rem rgba($color-neutral-dark-1, 0.1);
+
+  @include screen-large {
+    max-width: 75%;
+    align-self: center;
+    margin: 0 auto;
+  }
+
+  @include screen-medium {
+    grid-template-columns: 2fr auto auto;
+    max-width: 100%;
+    padding: 1.6rem 2.4rem;
+    justify-content: center;
+  }
+
+  @include screen-small {
+    grid-template-columns: 2fr auto;
+    padding: 1.2rem;
+  }
 
   &__icon {
     content: "";
@@ -162,6 +185,11 @@ export default {
       @include screen-medium {
         padding: 0 1rem 0 0;
       }
+
+      @include screen-small {
+        grid-column: 1/-1;
+        grid-row: 2;
+      }
     }
   }
 
@@ -178,19 +206,11 @@ export default {
     @include screen-medium {
       justify-self: end;
     }
-  }
-
-  @include screen-large {
-    max-width: 75%;
-    align-self: center;
-    margin: 0 auto;
-  }
-
-  @include screen-medium {
-    grid-template-columns: 2fr auto auto;
-    max-width: 100%;
-    padding: 1.6rem 2.4rem;
-    justify-content: center;
+    @include screen-small {
+      grid-row: 1/-1;
+      grid-column: 2;
+      align-self: end;
+    }
   }
 }
 </style>
