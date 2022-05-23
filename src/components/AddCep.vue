@@ -97,11 +97,21 @@ export default {
     &::placeholder {
       color: $color-neutral-dark-3;
       font-weight: 400;
+
+      @include screen-large {
+        font-size: 1.2rem;
+      }
     }
 
     &:focus {
       border-color: $color-primary-dark-1;
       box-shadow: 0 0.6rem 1rem rgba(0, 0, 0, 0.25);
+    }
+
+    @include screen-large {
+      max-width: 50%;
+      margin-right: 1rem;
+      padding: 0.8rem 1.5rem;
     }
   }
 
@@ -111,9 +121,21 @@ export default {
     position: absolute;
     bottom: 5%;
     left: 2%;
+
+    @include screen-large {
+      font-size: 1.2rem;
+    }
+
+    @include screen-medium {
+      bottom: -50%;
+    }
   }
 
   .btn--add-cep {
+    @include screen-large {
+      margin-right: auto;
+    }
+
     & span {
       display: inline-block;
       content: "";
@@ -121,6 +143,10 @@ export default {
       height: 2.4rem;
       background: url("@/assets/icone-plus.svg") no-repeat center center;
       transition: 0.5s;
+
+      @include screen-large {
+        display: none;
+      }
     }
 
     &:not(:disabled):hover,

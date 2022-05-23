@@ -46,6 +46,11 @@ export default {
   background-color: $color-primary-dark-1;
   font-weight: 700;
   color: $color-neutral-light-1;
+
+  @include screen-medium {
+    padding: 1rem;
+    justify-content: center;
+  }
 }
 
 .company {
@@ -56,20 +61,36 @@ export default {
   border-radius: 1rem;
   position: relative;
 
+  @include screen-medium {
+    width: 20rem;
+  }
+
   &__logo {
     position: absolute;
     top: 0;
     left: -7.4rem;
+
+    @include screen-medium {
+      display: none;
+    }
   }
 
   &__title {
     font-size: 1.6rem;
+
+    @include screen-medium {
+      font-size: 1.4rem;
+    }
   }
 
   &__subtitle {
     text-transform: uppercase;
     font-size: 1.2rem;
     font-weight: 400;
+
+    @include screen-medium {
+      font-size: 1.2rem;
+    }
   }
 }
 
@@ -92,6 +113,14 @@ export default {
     &:hover,
     &:focus {
       transform: scale(1.5);
+
+      @include screen-large {
+        transform: none;
+      }
+    }
+
+    @include screen-medium {
+      margin-right: 0;
     }
   }
 
@@ -104,6 +133,18 @@ export default {
     position: absolute;
     top: -15%;
     left: 20%;
+
+    @include screen-medium {
+      display: none;
+    }
+  }
+
+  @include screen-medium {
+    font-size: 1.4rem;
+
+    &__avatar {
+      display: none;
+    }
   }
 }
 </style>

@@ -88,10 +88,12 @@ export default {
 .list-container {
   @include flexColumn750;
   padding: 4rem 5rem;
-}
 
-.add-cep {
-  grid-column: 1/-1;
+  @include screen-large {
+    max-width: 65rem;
+    padding: 3rem;
+    margin: 0 auto;
+  }
 }
 
 .ceps-list {
@@ -101,6 +103,10 @@ export default {
   gap: 1.6rem;
   padding-top: 6rem;
   margin-bottom: 5rem;
+
+  @include screen-large {
+    align-self: center;
+  }
 }
 
 .ceps-item {
@@ -126,6 +132,10 @@ export default {
     & span {
       color: $color-neutral-light-4;
     }
+
+    @include screen-medium {
+      font-size: 1.6rem;
+    }
   }
 
   &__delete {
@@ -145,8 +155,11 @@ export default {
 }
 
 .btn--generate-address {
-  align-self: flex-end;
   position: relative;
+}
+
+#btn--generate-address {
+  margin: 0 auto;
 }
 
 .no-cep {

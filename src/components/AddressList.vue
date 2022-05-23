@@ -71,11 +71,20 @@ export default {
   text-align: center;
   font-size: 2.4rem;
   color: $color-neutral-dark-2;
+
+  @include screen-medium {
+    font-size: 1.6rem;
+  }
 }
 
 .address-list {
   @include flexColumn750;
   padding: 0 5rem;
+
+  @include screen-large {
+    max-width: 65rem;
+    margin: 0 auto;
+  }
 }
 
 .addresses {
@@ -98,6 +107,10 @@ export default {
     width: 2.4rem;
     height: 2.4rem;
     margin-right: 1.6rem;
+
+    @include screen-medium {
+      display: none;
+    }
   }
 
   &__info {
@@ -105,12 +118,20 @@ export default {
       font-size: 2rem;
       font-weight: 700;
       color: $color-neutral-dark-2;
+
+      @include screen-medium {
+        font-size: 1.4rem;
+      }
     }
 
     &--secondary {
       font-size: 1.6rem;
       font-weight: 400;
       color: $color-neutral-dark-1;
+
+      @include screen-medium {
+        font-size: 1.2rem;
+      }
     }
   }
 
@@ -124,6 +145,22 @@ export default {
     &:focus {
       transform: scale(1.5);
     }
+    @include screen-medium {
+      justify-self: end;
+    }
+  }
+
+  @include screen-large {
+    max-width: 75%;
+    align-self: center;
+    margin: 0 auto;
+  }
+
+  @include screen-medium {
+    grid-template-columns: 2fr 1fr;
+    max-width: 100%;
+    padding: 1.6rem 2.4rem;
+    justify-content: center;
   }
 }
 </style>

@@ -31,6 +31,10 @@ body {
 #app {
   display: grid;
   grid-template-columns: auto 1fr;
+
+  @include screen-medium {
+    display: block;
+  }
 }
 
 .sr-only {

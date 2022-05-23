@@ -18,4 +18,9 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+main {
+  min-height: 100vh;
+  margin-bottom: 6.4rem;
+}
+</style>

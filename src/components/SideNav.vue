@@ -51,6 +51,16 @@ export default {
   min-height: 100vh;
   padding: 4rem 3rem;
   background-color: $color-neutral-light-2;
+
+  @include screen-medium {
+    flex-direction: row;
+    width: 100vw;
+    height: 5rem;
+    min-height: initial;
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+  }
 }
 
 .actions {
@@ -63,16 +73,35 @@ export default {
     a {
       & img {
         transition: 0.25s;
+
+        @include screen-medium {
+          width: 3.2rem;
+          height: 3.2rem;
+        }
       }
 
       &:focus > img {
         transform: scale(1.5);
+
+        @include screen-large {
+          transform: none;
+        }
       }
     }
 
     &:not(:first-child) {
       margin-top: 7rem;
+
+      @include screen-medium {
+        margin: 0 0 0 7rem;
+      }
     }
+  }
+
+  @include screen-medium {
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
   }
 }
 .filter-btn {
@@ -86,7 +115,7 @@ export default {
   cursor: pointer;
   transition: 0.25s;
 
-  & img {
+  & > img {
     transition: 0.25s;
   }
 
@@ -94,9 +123,18 @@ export default {
   &:focus {
     background-color: rgba($color-neutral-dark-1, 0.75);
 
-    & img {
+    & > img {
       transform: scale(1.5);
+
+      @include screen-large {
+        transform: none;
+      }
     }
+  }
+
+  @include screen-medium {
+    width: 3.2rem;
+    height: 3.2rem;
   }
 }
 </style>

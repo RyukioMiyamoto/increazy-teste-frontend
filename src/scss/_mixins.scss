@@ -3,3 +3,15 @@
   flex-direction: column;
   max-width: 75rem;
 }
+
+@mixin screen-large {
+  @media screen and (max-width: 62em) {
+    @content;
+  }
+}
+
+@mixin screen-medium {
+  @media screen and (max-width: 48em) {
+    @content;
+  }
+}
